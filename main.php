@@ -4,8 +4,8 @@ require_once "html2text.php";
 require_once "CommentExtractor.php";
 
 $mailbox = 'imap.mail.yahoo.com';
-$username = 'tomdog126@yahoo.com';
-$password = 'Yahoo028300!';
+$username = '****@yahoo.com';
+$password = '****';
 $encryption = 'ssl'; // or ssl or ''
 
 $srcFolder = "UnReadTasks";
