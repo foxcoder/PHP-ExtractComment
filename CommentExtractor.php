@@ -34,12 +34,16 @@ function extractCommmentFromTextEmailBody($str) {
 	$array_len = count ( $str_lines );	
 	for($x = 0; $x < $array_len; $x ++) {
 		$line = $str_lines [$x];
-		
+		/*
 		if (startsWith ( $line, "From:" )) {
 			if ((($x + 1) < $array_len) && startsWith ( $str_lines [$x + 1], "Sent:" )) {
 				
 				break;
 			}
+		}*/
+		
+		if (preg_match("^[-]+$", $line)){
+			break;
 		}
 		
 		$str_result = $str_result . $line;
