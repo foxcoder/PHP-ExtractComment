@@ -115,7 +115,7 @@ class Imap {
     }
     
     public function haveFolder($src_folderId){
-    	$folderIds=getFolderIds();
+    	$folderIds=$this->getFolderIds();
     	foreach($folderIds as $folderId) {
     		if (strcasecmp($src_folderId, $folderId) == 0){
     			return true;
@@ -633,12 +633,15 @@ class Imap {
      * @return true or false
      * @param $string utf8 encoded string
      */
-    function convertToUtf8($str) { 
-        if(mb_detect_encoding($str, "UTF-8, ISO-8859-1, GBK")!="UTF-8")
-            $str = utf8_encode($str);
-        $str = iconv('UTF-8', 'UTF-8//IGNORE', $str);
-        return $str; 
+    function convertToUtf8($str) {       
+       $str_encoding=mb_detect_encoding($str, array('GB2312','GBK','ASCII','ISO-8859-1','UTF-8'));
+       return  iconv($str_encoding, 'UTF-8//IGNORE', $str);
     } 
+    
+    
+    function detectEncoding($str) {
+    	
+    }
     
     
     /**
