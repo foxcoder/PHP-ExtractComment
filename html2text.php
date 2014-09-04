@@ -28,7 +28,8 @@ function convert_html_to_text($html) {
 	$html = fix_newlines($html);
 
 	$doc = new DOMDocument();
-	if (!$doc->loadHTML($html))
+	$meta = '<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>';	
+	if (!$doc->loadHTML($meta.$html))
 		throw new Html2TextException("Could not load HTML - badly formed?", $html);
 
 	$output = iterate_over_node($doc);
